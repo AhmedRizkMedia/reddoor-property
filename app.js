@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // REPLACE 'YOUR_FORM_ID_HERE' WITH YOUR FORMSPREE FORM ID (e.g. 'mqkvgzel')
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdlwwwo';
 
   // Input Event Listeners to remove errors on typing
   nameInput.addEventListener('input', () => clearError(nameInput));
