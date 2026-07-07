@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit-btn');
   const resetBtn = document.getElementById('reset-btn');
   
-  const nameInput = document.getElementById('client-name');
+  const firstNameInput = document.getElementById('client-firstname');
+  const lastNameInput = document.getElementById('client-lastname');
   const emailInput = document.getElementById('client-email');
   const countryCodeSelect = document.getElementById('country-code');
   const phoneInput = document.getElementById('client-phone');
   const unitSelect = document.getElementById('client-unit');
   
-  const queuePositionSpan = document.getElementById('queue-position');
   const langButtons = document.querySelectorAll('.lang-btn');
 
   // Translation Dictionary
@@ -29,9 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
       alert_desc: "With only a limited number of shorefront mansion plots available for the initial intake, priority is given to registered portfolio clients. Fill out the verification form to request allocation.",
       form_title: "Apply for Allocation",
       form_desc: "Enter your contact credentials to verify your profile and access private pricing sheets.",
-      label_name: "Full Name",
-      placeholder_name: "Enter your full name",
-      error_name: "Please enter your full name.",
+      label_firstname: "First Name",
+      placeholder_firstname: "First Name",
+      error_firstname: "Please enter your first name.",
+      label_lastname: "Last Name",
+      placeholder_lastname: "Last Name",
+      error_lastname: "Please enter your last name.",
       label_email: "Email Address",
       error_email: "Please enter a valid email address.",
       label_phone: "Phone / WhatsApp",
@@ -42,10 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
       unit_option_3: "Palatial Waterfront Estate",
       unit_option_4: "Undecided / View All",
       btn_submit: "REGISTER MY INTEREST",
-      success_title: "Registration Logged",
-      success_desc: "Your profile has been queued for verification. A Senior Advisor will contact you directly on WhatsApp.",
-      success_queue_label: "PORTFOLIO QUEUE STATUS",
-      success_helper: "Brochures, pricing maps, and VIP inventory guides are being compiled for you.",
+      success_title: "Thank You for Your Interest",
+      success_desc: "Your private allocation request has been successfully registered. Our VIP Customer Care team will contact you shortly to assist you in a personalized manner.",
+      seal_text: "RED DOOR PRIVATE CLIENT CARE",
       btn_reset: "Submit Another Request",
       highlights_title: "WHY INVEST IN DUBAI REAL ESTATE?",
       highlights_subtitle: "Capitalize on the world's most dynamic luxury real estate hub.",
@@ -84,9 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
       alert_desc: "Avec un nombre très limité de terrains pour manoirs en bord de lagune disponibles pour le lancement initial, la priorité est accordée aux clients enregistrés. Remplissez le formulaire de vérification pour postuler.",
       form_title: "Demande d'Allocation",
       form_desc: "Saisissez vos coordonnées pour vérifier votre profil et accéder aux grilles de prix privées.",
-      label_name: "Nom Complet",
-      placeholder_name: "Saisissez votre nom complet",
-      error_name: "Veuillez saisir votre nom complet.",
+      label_firstname: "Prénom",
+      placeholder_firstname: "Prénom",
+      error_firstname: "Veuillez saisir votre prénom.",
+      label_lastname: "Nom",
+      placeholder_lastname: "Nom de famille",
+      error_lastname: "Veuillez saisir votre nom.",
       label_email: "Adresse E-mail",
       error_email: "Veuillez saisir une adresse e-mail valide.",
       label_phone: "Téléphone / WhatsApp",
@@ -97,10 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
       unit_option_3: "Domaine de Prestige en Bord de l'Eau",
       unit_option_4: "Indécis / Tout Afficher",
       btn_submit: "ENREGISTRER MON INTÉRÊT",
-      success_title: "Inscription Enregistrée",
-      success_desc: "Votre profil a été mis en attente pour vérification. Un conseiller senior vous contactera directement sur WhatsApp.",
-      success_queue_label: "STATUT DE LA FILE D'ATTENTE",
-      success_helper: "Les brochures, les plans de prix et les guides d'inventaire VIP sont en cours de compilation.",
+      success_title: "Merci de votre intérêt",
+      success_desc: "Votre demande d'allocation privée a été enregistrée avec succès. Notre service clientèle VIP prendra contact avec vous dans les plus brefs délais afin de vous accompagner de manière personnalisée.",
+      seal_text: "RED DOOR PRIVATE CLIENT CARE",
       btn_reset: "Soumettre une autre demande",
       highlights_title: "POURQUOI INVESTIR DANS L'IMMOBILIER À DUBAÏ ?",
       highlights_subtitle: "Profitez du marché immobilier de luxe le plus dynamique au monde.",
@@ -177,23 +181,25 @@ document.addEventListener('DOMContentLoaded', () => {
   setLanguage(savedLang);
 
 
-  // REPLACE 'YOUR_FORM_ID_HERE' WITH YOUR FORMSPREE FORM ID (e.g. 'mqkvgzel')
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdlwwwo';
-
   // Input Event Listeners to remove errors on typing
-  nameInput.addEventListener('input', () => clearError(nameInput));
+  firstNameInput.addEventListener('input', () => clearError(firstNameInput));
+  lastNameInput.addEventListener('input', () => clearError(lastNameInput));
   emailInput.addEventListener('input', () => clearError(emailInput));
   phoneInput.addEventListener('input', () => clearError(phoneInput));
+
+  // Active Formspree Endpoint
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdlwwwo';
 
   // Handle Form Submission
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const isNameValid = validateName();
+    const isFirstNameValid = validateFirstName();
+    const isLastNameValid = validateLastName();
     const isEmailValid = validateEmail();
     const isPhoneValid = validatePhone();
     
-    if (!isNameValid || !isEmailValid || !isPhoneValid) {
+    if (!isFirstNameValid || !isLastNameValid || !isEmailValid || !isPhoneValid) {
       return;
     }
     
@@ -202,7 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
     
     const formData = {
-      name: nameInput.value.trim(),
+      first_name: firstNameInput.value.trim(),
+      last_name: lastNameInput.value.trim(),
       email: emailInput.value.trim(),
       phone: countryCodeSelect.value + ' ' + phoneInput.value.trim(),
       unit: unitSelect.value
@@ -219,10 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       if (response.ok) {
-        // Generate a luxury queue position (mock database count)
-        const randomQueueNumber = Math.floor(Math.random() * 80) + 110;
-        queuePositionSpan.textContent = `VIP-#${randomQueueNumber}`;
-        
         // Transition cards
         formCard.classList.add('hidden');
         successCard.classList.remove('hidden');
@@ -254,17 +257,27 @@ document.addEventListener('DOMContentLoaded', () => {
   resetBtn.addEventListener('click', () => {
     successCard.classList.add('hidden');
     formCard.classList.remove('hidden');
-    nameInput.focus();
+    firstNameInput.focus();
   });
 
   // Helper validation functions
-  function validateName() {
-    const value = nameInput.value.trim();
+  function validateFirstName() {
+    const value = firstNameInput.value.trim();
     if (value.length < 2) {
-      showError(nameInput);
+      showError(firstNameInput);
       return false;
     }
-    clearError(nameInput);
+    clearError(firstNameInput);
+    return true;
+  }
+
+  function validateLastName() {
+    const value = lastNameInput.value.trim();
+    if (value.length < 2) {
+      showError(lastNameInput);
+      return false;
+    }
+    clearError(lastNameInput);
     return true;
   }
 

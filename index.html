@@ -83,11 +83,18 @@
           <p class="form-card-desc" data-i18n="form_desc">Saisissez vos coordonnées pour vérifier votre profil et accéder aux grilles de prix privées.</p>
           
           <form id="waiting-list-form" novalidate>
-            <!-- Name -->
-            <div class="form-group">
-              <label for="client-name" class="form-label" data-i18n="label_name">Nom Complet</label>
-              <input type="text" id="client-name" name="name" data-i18n-placeholder="placeholder_name" placeholder="Saisissez votre nom complet" required>
-              <span class="error-msg" id="name-error" data-i18n="error_name">Veuillez saisir votre nom complet.</span>
+            <!-- Name (First and Last inline) -->
+            <div class="name-input-row">
+              <div class="form-group">
+                <label for="client-firstname" class="form-label" data-i18n="label_firstname">Prénom</label>
+                <input type="text" id="client-firstname" name="first_name" data-i18n-placeholder="placeholder_firstname" placeholder="Prénom" required>
+                <span class="error-msg" id="firstname-error" data-i18n="error_firstname">Veuillez saisir votre prénom.</span>
+              </div>
+              <div class="form-group">
+                <label for="client-lastname" class="form-label" data-i18n="label_lastname">Nom de famille</label>
+                <input type="text" id="client-lastname" name="last_name" data-i18n-placeholder="placeholder_lastname" placeholder="Nom" required>
+                <span class="error-msg" id="lastname-error" data-i18n="error_lastname">Veuillez saisir votre nom.</span>
+              </div>
             </div>
 
             <!-- Email -->
@@ -150,17 +157,14 @@
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </div>
-          <h3 class="form-card-title" data-i18n="success_title">Inscription Enregistrée</h3>
+          <h3 class="form-card-title" data-i18n="success_title">Merci de votre intérêt</h3>
           <p class="form-card-desc" data-i18n="success_desc">
-            Votre profil a été mis en attente pour vérification. Un conseiller senior vous contactera directement sur WhatsApp.
+            Votre demande d'allocation privée a été enregistrée avec succès. Notre service VIP Clientèle prendra contact avec vous dans les plus brefs délais afin de vous accompagner de manière personnalisée.
           </p>
-          <div class="vip-badge-number">
-            <span class="badge-number-label" data-i18n="success_queue_label">STATUT DE LA FILE D'ATTENTE</span>
-            <span class="badge-number-value" id="queue-position">VIP-#184</span>
+          <div class="luxury-seal">
+            <span class="seal-logo">✦</span>
+            <span class="seal-text" data-i18n="seal_text">RED DOOR PRIVATE CLIENT CARE</span>
           </div>
-          <p class="verification-helper-text" data-i18n="success_helper">
-            Les brochures, les plans de prix et les guides d'inventaire VIP sont en cours de compilation.
-          </p>
           <button class="reset-btn" id="reset-btn" data-i18n="btn_reset">Soumettre une autre demande</button>
         </div>
       </div>

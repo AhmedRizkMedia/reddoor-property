@@ -485,38 +485,40 @@ input::placeholder {
   color: var(--emaar-gold);
   margin-bottom: 20px;
 }
-
-.vip-badge-number {
+.luxury-seal {
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  padding: 14px 0;
+  padding: 16px 0;
   width: 100%;
-  margin: 16px 0 20px;
+  margin: 16px 0 28px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 6px;
 }
 
-.badge-number-label {
+.seal-logo {
+  font-size: 1.1rem;
+  color: var(--emaar-gold);
+  animation: pulse-dot 2s infinite;
+}
+
+.seal-text {
   font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
   font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--emaar-blue);
   text-transform: uppercase;
 }
 
-.badge-number-value {
-  font-weight: 900;
-  font-size: 1.35rem;
-  color: var(--emaar-gold);
-  letter-spacing: 0.05em;
+.name-input-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
 }
 
-.verification-helper-text {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 24px;
+.name-input-row .form-group {
+  flex: 1;
 }
 
 .reset-btn {
