@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page_title">The Oasis par Emaar - Portail d'Investissement Immobilier à Dubaï</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portail officiel d'investissement et de pré-lancement pour The Oasis par Emaar, Dubaï. Accédez à des villas d'exception en bord de mer.">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Google Fonts: Emaar uses Lato -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Exclusivity Banner -->
+  <div class="exclusivity-banner">
+    <div class="banner-content">
+      <span class="lock-icon">🔒</span> <span data-i18n="banner">ALLOCATION DE PORTEFEUILLE PRIVÉE &bull; VÉRIFICATION REQUISE POUR L'INVENTAIRE INTAKE</span>
+    </div>
+  </div>
+
+  <!-- Navigation Header matching property.emaar.com -->
+  <header class="main-header">
+    <div class="nav-container">
+      <div class="nav-left">
+        <img src="assets/emaar-logo.svg" class="emaar-logo-header" alt="Emaar Properties Logo">
+      </div>
+      <div class="nav-right">
+        <div class="broker-co-brand">
+          <span class="broker-tagline" data-i18n="marketed_by">COMMERCIALISÉ EN EXCLUSIVITÉ PAR</span>
+          <img src="assets/red-door-logo-white.png" class="broker-logo-header" alt="Red Door Real Estate Logo">
+        </div>
+        <!-- Language Switcher EN | FR (FR is active by default) -->
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn active" data-lang="fr">FR</button>
+        </div>
+        <a href="#form-card" class="header-cta" data-i18n="enquire_now">S'INFORMER</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with background image and form container -->
+  <section class="hero-section">
+    <div class="hero-grid">
+      <!-- Hero Copy Left -->
+      <div class="hero-left">
+        <div class="vip-badge" data-i18n="vip_badge">SUR INVITATION VIP UNIQUEMENT</div>
+        <h1 class="hero-main-title" data-i18n="hero_title">
+          THE OASIS <br><span class="gold-text">PAR EMAAR</span>
+        </h1>
+        <h2 class="hero-sub-title" data-i18n="hero_subtitle">MANOIRS ET VILLAS EN BORD DE L'EAU</h2>
+        
+        <p class="hero-intro-text" data-i18n="hero_intro">
+          Présentation de la plus récente et prestigieuse communauté d'Emaar à Dubaï. Conçu pour un cercle restreint, The Oasis propose des demeures somptueuses bordées de lagunes sereines, de plages de sable blanc et d'équipements de bien-être haut de gamme.
+        </p>
+
+        <!-- Exclusivity Box inside Hero -->
+        <div class="info-alert-box">
+          <span class="alert-title" data-i18n="alert_title">Limites Strictes de la Phase I</span>
+          <p class="alert-desc" data-i18n="alert_desc">
+            Avec un nombre très limité de terrains pour manoirs en bord de lagune disponibles pour le lancement initial, la priorité est accordée aux clients enregistrés. Remplissez le formulaire de vérification pour postuler.
+          </p>
+        </div>
+      </div>
+
+      <!-- Hero Form Right -->
+      <div class="hero-right">
+        <!-- Main Form Card -->
+        <div class="form-card-wrapper" id="form-card">
+          <div class="card-indicator-gold"></div>
+          <h3 class="form-card-title" data-i18n="form_title">Demande d'Allocation</h3>
+          <p class="form-card-desc" data-i18n="form_desc">Saisissez vos coordonnées pour vérifier votre profil et accéder aux grilles de prix privées.</p>
+          
+          <form id="waiting-list-form" novalidate>
+            <!-- Name -->
+            <div class="form-group">
+              <label for="client-name" class="form-label" data-i18n="label_name">Nom Complet</label>
+              <input type="text" id="client-name" name="name" data-i18n-placeholder="placeholder_name" placeholder="Saisissez votre nom complet" required>
+              <span class="error-msg" id="name-error" data-i18n="error_name">Veuillez saisir votre nom complet.</span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="client-email" class="form-label" data-i18n="label_email">Adresse E-mail</label>
+              <input type="email" id="client-email" name="email" placeholder="name@example.com" required>
+              <span class="error-msg" id="email-error" data-i18n="error_email">Veuillez saisir une adresse e-mail valide.</span>
+            </div>
+
+            <!-- Phone with Country Code Select -->
+            <div class="form-group">
+              <label for="client-phone" class="form-label" data-i18n="label_phone">Téléphone / WhatsApp</label>
+              <div class="phone-input-container">
+                <select id="country-code" name="country_code">
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+974">🇶🇦 +974</option>
+                  <option value="+965">🇰🇼 +965</option>
+                  <option value="+968">🇴🇲 +968</option>
+                  <option value="+973">🇧🇭 +973</option>
+                  <option value="+20">🇪🇬 +20</option>
+                  <option value="+962">🇯🇴 +962</option>
+                  <option value="+961">🇱🇧 +961</option>
+                  <option value="+7">🇷🇺 +7</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+90">🇹🇷 +90</option>
+                </select>
+                <input type="tel" id="client-phone" name="phone" placeholder="50 123 4567" required>
+              </div>
+              <span class="error-msg" id="phone-error" data-i18n="error_phone">Veuillez saisir un numéro de téléphone valide.</span>
+            </div>
+
+            <!-- Unit Select -->
+            <div class="form-group">
+              <label for="client-unit" class="form-label" data-i18n="label_unit">Type de Propriété Souhaité</label>
+              <select id="client-unit" name="unit">
+                <option value="4-bed-villa" data-i18n="unit_option_1">Villa Bord de Lagune 4 Chambres</option>
+                <option value="5-bed-villa" data-i18n="unit_option_2">Manoir Bord de Lagune 5 Chambres</option>
+                <option value="mansion" data-i18n="unit_option_3">Domaine de Prestige en Bord de l'Eau</option>
+                <option value="undecided" data-i18n="unit_option_4">Indécis / Tout Afficher</option>
+              </select>
+            </div>
+
+            <!-- Emaar Gold Submit Button -->
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span class="btn-text" data-i18n="btn_submit">ENREGISTRER MON INTÉRÊT</span>
+              <span class="btn-loader"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Success Card (Initially Hidden) -->
+        <div class="form-card-wrapper success-card-wrapper hidden" id="success-card">
+          <div class="success-icon-box">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="form-card-title" data-i18n="success_title">Inscription Enregistrée</h3>
+          <p class="form-card-desc" data-i18n="success_desc">
+            Votre profil a été mis en attente pour vérification. Un conseiller senior vous contactera directement sur WhatsApp.
+          </p>
+          <div class="vip-badge-number">
+            <span class="badge-number-label" data-i18n="success_queue_label">STATUT DE LA FILE D'ATTENTE</span>
+            <span class="badge-number-value" id="queue-position">VIP-#184</span>
+          </div>
+          <p class="verification-helper-text" data-i18n="success_helper">
+            Les brochures, les plans de prix et les guides d'inventaire VIP sont en cours de compilation.
+          </p>
+          <button class="reset-btn" id="reset-btn" data-i18n="btn_reset">Soumettre une autre demande</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Section matching property.emaar.com secondary sections -->
+  <section class="highlights-section">
+    <div class="section-container">
+      <h2 class="section-title" data-i18n="highlights_title">POURQUOI INVESTIR DANS L'IMMOBILIER À DUBAÏ ?</h2>
+      <p class="section-subtitle" data-i18n="highlights_subtitle">Profitez du marché immobilier de luxe le plus dynamique au monde.</p>
+      
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-stat">0%</div>
+          <div class="highlight-name" data-i18n="stat1_name">Impôt sur le Revenu de 0%</div>
+          <p class="highlight-description" data-i18n="stat1_desc">Conservez 100% de vos revenus, rendements locatifs et plus-values.</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-stat">10-Yr</div>
+          <div class="highlight-name" data-i18n="stat2_name">Éligibilité au Golden Visa</div>
+          <p class="highlight-description" data-i18n="stat2_desc">Obtenez une résidence de longue durée pour vous et votre famille lors de l'achat.</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-stat">8-10%</div>
+          <div class="highlight-name" data-i18n="stat3_name">Rendements Locatifs Élevés</div>
+          <p class="highlight-description" data-i18n="stat3_desc">Les propriétés Emaar surpassent constamment les moyennes mondiales.</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-stat">USD Peg</div>
+          <div class="highlight-name" data-i18n="stat4_name">Devise Stable</div>
+          <p class="highlight-description" data-i18n="stat4_desc">Le Dirham des EAU est indexé sur le dollar américain, assurant une préservation stable du capital.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Communities / Mansion Grid Section -->
+  <section class="collection-section">
+    <div class="section-container">
+      <h2 class="section-title" data-i18n="collection_title">LA SÉLECTION PRIVÉE THE OASIS</h2>
+      <p class="section-subtitle" data-i18n="collection_subtitle">Des détails de conception raffinés pour les clients les plus exigeants.</p>
+      
+      <div class="collection-grid">
+        <!-- Card 1 -->
+        <div class="collection-card">
+          <div class="card-tag" data-i18n="card1_tag">RIVAGE</div>
+          <h4 class="card-heading" data-i18n="card1_title">Manoirs Lagunaires</h4>
+          <p class="card-body-text" data-i18n="card1_desc">
+            Demeures majestueuses de 6 et 7 chambres avec accès direct au rivage, baies vitrées et piscines à débordement privées.
+          </p>
+        </div>
+        <!-- Card 2 -->
+        <div class="collection-card">
+          <div class="card-tag" data-i18n="card2_tag">BORD DE L'EAU</div>
+          <h4 class="card-heading" data-i18n="card2_title">Villas de Rivage</h4>
+          <p class="card-body-text" data-i18n="card2_desc">
+            Propriétés haut de gamme de 4 et 5 chambres entourées de voies navigables cristallines, salons de jardin et terrasses sur mesure.
+          </p>
+        </div>
+        <!-- Card 3 -->
+        <div class="collection-card">
+          <div class="card-tag" data-i18n="card3_tag">BIEN-ÊTRE</div>
+          <h4 class="card-heading" data-i18n="card3_title">Club des Résidents d'Élite</h4>
+          <p class="card-body-text" data-i18n="card3_desc">
+            Concierge privé, clinique de bien-être de pointe, accès à la plage de sable privée et restauration réservée aux résidents.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <p class="footer-disclaimer" data-i18n="footer_disclaimer">
+        Avertissement: Cette page est gérée par un courtier agréé partenaire d'Emaar Properties. La disponibilité des stocks, les plans de paiement et les allocations promotionnelles sont sujets à modification.
+      </p>
+      <p class="footer-copyright" data-i18n="footer_copyright">&copy; 2026 Red Door Real Estate en partenariat avec Emaar Properties. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Link -->
+  <script src="app.js"></script>
+</body>
+</html>
