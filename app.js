@@ -177,6 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setLanguage(savedLang);
 
 
+  // REPLACE 'YOUR_FORM_ID_HERE' WITH YOUR FORMSPREE FORM ID (e.g. 'mqkvgzel')
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE';
+
   // Input Event Listeners to remove errors on typing
   nameInput.addEventListener('input', () => clearError(nameInput));
   emailInput.addEventListener('input', () => clearError(emailInput));
@@ -205,34 +208,46 @@ document.addEventListener('DOMContentLoaded', () => {
       unit: unitSelect.value
     };
 
-    /* 
-      EASY INTEGRATION NOTE:
-      To connect this to a real backend (e.g. Formspree, Formspark, or Google Sheets):
-      
-      const response = await fetch('YOUR_FORM_ENDPOINT_URL', {
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify(formData)
       });
-    */
-    
-    // Simulate API request (1.5 seconds luxury loader delay)
-    setTimeout(() => {
+      
+      if (response.ok) {
+        // Generate a luxury queue position (mock database count)
+        const randomQueueNumber = Math.floor(Math.random() * 80) + 110;
+        queuePositionSpan.textContent = `VIP-#${randomQueueNumber}`;
+        
+        // Transition cards
+        formCard.classList.add('hidden');
+        successCard.classList.remove('hidden');
+        
+        // Reset form fields
+        form.reset();
+      } else {
+        const errorLang = localStorage.getItem('preferredLanguage') || 'fr';
+        const errorAlert = errorLang === 'fr' 
+          ? "Une erreur s'est produite lors de la soumission. Veuillez réessayer." 
+          : "An error occurred during submission. Please try again.";
+        alert(errorAlert);
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      const errorLang = localStorage.getItem('preferredLanguage') || 'fr';
+      const errorAlert = errorLang === 'fr' 
+        ? "Erreur de connexion. Veuillez vérifier votre réseau et réessayer." 
+        : "Connection error. Please check your network and try again.";
+      alert(errorAlert);
+    } finally {
       // Revert button state
       submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
-      
-      // Generate a luxury queue position (mock database count)
-      const randomQueueNumber = Math.floor(Math.random() * 80) + 110;
-      queuePositionSpan.textContent = `VIP-#${randomQueueNumber}`;
-      
-      // Transition cards
-      formCard.classList.add('hidden');
-      successCard.classList.remove('hidden');
-      
-      // Reset form fields
-      form.reset();
-    }, 1500);
+    }
   });
 
   // Handle Reset / Register Another
