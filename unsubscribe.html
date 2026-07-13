@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsubscribe | Red Door Properties</title>
+  
+  <!-- Google Fonts: Lato -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-primary: 'Lato', sans-serif;
+      --reddoor-charcoal: #111111;
+      --reddoor-red: #e53935;
+      --reddoor-red-hover: #c62828;
+      --bg-page: #f9f9f9;
+      --bg-surface: #ffffff;
+      --border-color: #e2e2e2;
+      --text-primary: #1a1a1a;
+      --text-secondary: #5f5f5f;
+      --radius-sm: 2px;
+      --radius-md: 4px;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-primary);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-header {
+      background-color: var(--reddoor-charcoal);
+      border-bottom: 2px solid var(--reddoor-red);
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    .broker-logo-header {
+      height: 38px;
+      width: auto;
+    }
+
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .unsubscribe-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 440px;
+      padding: 40px;
+      position: relative;
+      text-align: center;
+    }
+
+    .card-indicator-red {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: var(--reddoor-red);
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--reddoor-charcoal);
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 12px 16px;
+      font-family: var(--font-primary);
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      background-color: #fafafa;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    input[type="email"]:focus {
+      background-color: #ffffff;
+      border-color: var(--reddoor-red);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--reddoor-red);
+      color: #ffffff;
+      border: none;
+      padding: 14px 20px;
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--reddoor-red-hover);
+    }
+
+    .submit-btn:disabled {
+      background-color: var(--border-color);
+      color: var(--text-secondary);
+      cursor: not-allowed;
+    }
+
+    .success-message {
+      display: none;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background-color: rgba(229, 57, 53, 0.08);
+      border: 1px solid var(--reddoor-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--reddoor-red);
+      margin: 0 auto 20px;
+    }
+
+    .main-footer {
+      background-color: var(--reddoor-charcoal);
+      color: rgba(255, 255, 255, 0.4);
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <img src="assets/red-door-logo-white.png" class="broker-logo-header" alt="Red Door Properties Logo">
+  </header>
+
+  <div class="content-wrapper">
+    <div class="unsubscribe-card">
+      <div class="card-indicator-red"></div>
+      
+      <!-- Unsubscribe Form -->
+      <div id="form-container">
+        <h1 id="title-text">Unsubscribe / Se désabonner</h1>
+        <p id="desc-text">We are sorry to see you go. Confirm your email address below to unsubscribe from our updates.</p>
+        
+        <form id="unsubscribe-form">
+          <div class="form-group">
+            <label for="email" class="form-label" id="label-text">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" required>
+          </div>
+          <button type="submit" class="submit-btn" id="submit-btn">Unsubscribe / Se désabonner</button>
+        </form>
+      </div>
+
+      <!-- Success Screen -->
+      <div id="success-container" class="success-message">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h1 id="success-title">Successfully Unsubscribed</h1>
+        <p id="success-desc">You have been successfully removed from our mailing list. Your Monday CRM record will be updated shortly.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    &copy; 2026 Red Door Real Estate. All rights reserved.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const emailInput = document.getElementById('email');
+      const form = document.getElementById('unsubscribe-form');
+      const formContainer = document.getElementById('form-container');
+      const successContainer = document.getElementById('success-container');
+      const submitBtn = document.getElementById('submit-btn');
+
+      // 1. Grab email from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const emailParam = urlParams.get('email');
+      if (emailParam) {
+        emailInput.value = emailParam.trim();
+      }
+
+      // 2. Multilingual UI Toggle (checks browser or url language parameter)
+      const lang = urlParams.get('lang') || navigator.language.slice(0, 2);
+      if (lang === 'fr') {
+        document.documentElement.lang = 'fr';
+        document.getElementById('title-text').innerText = "Se désabonner";
+        document.getElementById('desc-text').innerText = "Nous sommes désolés de vous voir partir. Confirmez votre adresse e-mail ci-dessous pour ne plus recevoir nos communications.";
+        document.getElementById('label-text').innerText = "Adresse E-mail";
+        document.getElementById('submit-btn').innerText = "Confirmer le désabonnement";
+        document.getElementById('success-title').innerText = "Désabonnement réussi";
+        document.getElementById('success-desc').innerText = "Vous avez été retiré avec succès de notre liste de diffusion. Votre dossier Monday CRM sera mis à jour sous peu.";
+      }
+
+      // 3. Handle Form Submission to Formspree
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        submitBtn.disabled = true;
+        submitBtn.innerText = lang === 'fr' ? "Traitement..." : "Processing...";
+
+        try {
+          const response = await fetch('https://formspree.io/f/xzdlwwwo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              email: email,
+              status: "unsubscribed",
+              unsubscribed: true,
+              source: "unsubscribe_page",
+              language: lang
+            })
+          });
+
+          if (response.ok) {
+            formContainer.style.display = 'none';
+            successContainer.style.display = 'block';
+          } else {
+            alert(lang === 'fr' ? "Erreur de traitement. Veuillez réessayer." : "Error processing request. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.innerText = lang === 'fr' ? "Confirmer le désabonnement" : "Unsubscribe / Se désabonner";
+          }
+        } catch (error) {
+          console.error(error);
+          alert(lang === 'fr' ? "Erreur de connexion. Veuillez réessayer." : "Connection error. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = lang === 'fr' ? "Confirmer le désabonnement" : "Unsubscribe / Se désabonner";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

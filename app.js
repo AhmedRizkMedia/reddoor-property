@@ -227,8 +227,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initialize page language from localStorage or default (French)
-  const savedLang = localStorage.getItem('preferredLanguage') || 'fr';
+  // Initialize page language from URL parameter (?lang=en or ?lang=fr), localStorage, or default (French)
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  let savedLang = 'fr';
+  if (urlLang === 'en' || urlLang === 'fr') {
+    savedLang = urlLang;
+  } else {
+    savedLang = localStorage.getItem('preferredLanguage') || 'fr';
+  }
   setLanguage(savedLang);
 
   // Input Event Listeners to remove errors on typing
@@ -454,16 +461,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Extract UTM parameters from URL helper
+  // Store UTM parameters in sessionStorage on load to preserve them during session
+  function preserveUtmParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    utmKeys.forEach(key => {
+      const val = urlParams.get(key);
+      if (val) {
+        sessionStorage.setItem(key, val);
+      }
+    });
+  }
+  preserveUtmParams();
+
+  // Extract UTM parameters from URL or sessionStorage
   function getUtmParams() {
     const urlParams = new URLSearchParams(window.location.search);
-    return {
-      utm_source: urlParams.get('utm_source') || '',
-      utm_medium: urlParams.get('utm_medium') || '',
-      utm_campaign: urlParams.get('utm_campaign') || '',
-      utm_term: urlParams.get('utm_term') || '',
-      utm_content: urlParams.get('utm_content') || ''
-    };
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    const params = {};
+    utmKeys.forEach(key => {
+      params[key] = urlParams.get(key) || sessionStorage.getItem(key) || '';
+    });
+    return params;
   }
 
   // Analytics Unified Tracking Handler
