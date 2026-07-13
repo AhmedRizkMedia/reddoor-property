@@ -214,6 +214,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. Store language preference in localStorage
     localStorage.setItem('preferredLanguage', lang);
+
+    // 7. Update WhatsApp message links based on selected language
+    const heroWhatsapp = document.getElementById('hero-whatsapp-btn');
+    const successWhatsapp = document.getElementById('success-whatsapp-btn');
+    const stickyWhatsapp = document.getElementById('sticky-whatsapp-btn');
+    
+    if (lang === 'en') {
+      if (heroWhatsapp) heroWhatsapp.setAttribute('href', 'https://wa.me/971589110270?text=Hello%2C%20I%20would%20like%20to%20learn%20more%20about%20the%20Dubai%20property%20opportunities%20with%20flexible%20payment%20plans.');
+      if (successWhatsapp) successWhatsapp.setAttribute('href', 'https://wa.me/971589110270?text=Hello%2C%20I%20just%20registered%20on%20your%20portal%20and%20would%20like%20to%20speak%20to%20an%20advisor%20right%20away.');
+      if (stickyWhatsapp) stickyWhatsapp.setAttribute('href', 'https://wa.me/971589110270?text=Hello%2C%20I%20would%20like%20to%20learn%20more%20about%20the%20Dubai%20property%20opportunities%20with%20flexible%20payment%20plans.');
+    } else {
+      if (heroWhatsapp) heroWhatsapp.setAttribute('href', 'https://wa.me/971589110270?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20les%20opportunit%C3%A9s%20immobili%C3%A8res%20avec%20plan%20de%20paiement%20flexible.');
+      if (successWhatsapp) successWhatsapp.setAttribute('href', 'https://wa.me/971589110270?text=Bonjour%2C%20je%20viens%20de%20remplir%20le%20formulaire%20et%20je%20souhaite%20parler%20%C3%A0%20un%20conseiller%20de%20suite.');
+      if (stickyWhatsapp) stickyWhatsapp.setAttribute('href', 'https://wa.me/971589110270?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20les%20opportunit%C3%A9s%20immobili%C3%A8res%20avec%20plan%20de%20paiement%20flexible.');
+    }
   }
 
   // Attach click listeners to language buttons
