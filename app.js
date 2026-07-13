@@ -11,24 +11,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const countryCodeSelect = document.getElementById('country-code');
   const phoneInput = document.getElementById('client-phone');
   const unitSelect = document.getElementById('client-unit');
+  const consentInput = document.getElementById('client-consent');
   
   const langButtons = document.querySelectorAll('.lang-btn');
 
   // Translation Dictionary
   const translations = {
     en: {
-      page_title: "The Oasis by Emaar - Dubai Properties Investment Portal",
-      banner: "PRIVATE PORTFOLIO ALLOCATION &bull; VERIFICATION REQUIRED FOR INVENTORY INTAKE",
-      marketed_by: "EXCLUSIVELY MARKETED BY",
+      page_title: "Dubai Properties with Flexible Payment Plans | Red Door Properties",
+      banner: "EXCLUSIVE OPPORTUNITIES FOR RED DOOR CLIENTS &bull; VIP ALLOCATION PORTAL",
       enquire_now: "ENQUIRE NOW",
-      vip_badge: "VIP INVITE ONLY",
-      hero_title: 'THE OASIS <br><span class="gold-text">BY EMAAR</span>',
-      hero_subtitle: "WATERFRONT MANSIONS & VILLAS",
-      hero_intro: "Presenting Emaar's newest, most prestigious master community in Dubai. Designed for a select few, The Oasis features palatial estates bordered by serene lagoons, white sand beaches, and championship wellness amenities.",
-      alert_title: "Strict Phase I Limits",
-      alert_desc: "With only a limited number of shorefront mansion plots available for the initial intake, priority is given to registered portfolio clients. Fill out the verification form to request allocation.",
-      form_title: "Apply for Allocation",
-      form_desc: "Enter your contact credentials to verify your profile and access private pricing sheets.",
+      vip_badge: "VIP ACCESS ONLY",
+      hero_title: "Own a Property in Dubai with Flexible Payment Options",
+      hero_subtitle_1: "Zero Initial Down Payment on Selected Properties",
+      hero_subtitle_2: "Monthly Payment Plans from 0.5%",
+      hero_intro: "Discover exclusive Dubai property opportunities selected for Red Door clients, including studios, 1-bedroom, 2-bedroom and 3-bedroom apartments with flexible payment plans and selected post-handover options.",
+      hero_cta_primary: "View Available Properties",
+      hero_cta_secondary: "Speak to an Advisor",
+      urgency_text: "Limited-Time Opportunities &bull; Limited Units Available",
+      form_title: "Get Your Exclusive Property Options",
+      form_desc: "Complete the form and a Red Door property advisor will send you available opportunities matching your preferences.",
       label_firstname: "First Name",
       placeholder_firstname: "First Name",
       error_firstname: "Please enter your first name.",
@@ -39,53 +41,72 @@ document.addEventListener('DOMContentLoaded', () => {
       error_email: "Please enter a valid email address.",
       label_phone: "Phone / WhatsApp",
       error_phone: "Please enter a valid phone number.",
-      label_unit: "Preferred Mansion Class",
-      unit_option_1: "4-Bedroom Shoreline Villa",
-      unit_option_2: "5-Bedroom Lagoon Mansion",
-      unit_option_3: "Palatial Waterfront Estate",
-      unit_option_4: "Undecided / View All",
-      btn_submit: "REGISTER MY INTEREST",
+      label_unit: "Preferred Property Type",
+      unit_option_1: "Studio",
+      unit_option_2: "1 Bedroom",
+      unit_option_3: "2 Bedrooms",
+      unit_option_4: "3 Bedrooms",
+      unit_option_5: "Not Sure",
+      consent_text: "I consent to be contacted by phone, email, and WhatsApp regarding matching property opportunities.",
+      error_consent: "Please accept the consent checkbox to proceed.",
+      btn_submit: "Show Me Available Offers",
+      form_disclosure: "No obligation. Availability and payment plans depend on the selected project, applicable terms and buyer eligibility.",
       success_title: "Thank You for Your Interest",
-      success_desc: "Your private allocation request has been successfully registered. Our VIP Customer Care team will contact you shortly to assist you in a personalized manner.",
+      success_desc: "Your private request has been successfully registered. Our VIP Customer Care team will contact you shortly to assist you in a personalized manner.",
       seal_text: "RED DOOR PRIVATE CLIENT CARE",
+      success_whatsapp_btn: "Chat on WhatsApp",
       btn_reset: "Submit Another Request",
-      highlights_title: "WHY INVEST IN DUBAI REAL ESTATE?",
-      highlights_subtitle: "Capitalize on the world's most dynamic luxury real estate hub.",
-      stat1_name: "Personal Income Tax",
-      stat1_desc: "Retain 100% of your earnings, rental yield, and capital appreciation.",
-      stat2_name: "Golden Visa Eligibility",
-      stat2_desc: "Secure long-term residency for you and your family upon property acquisition.",
-      stat3_name: "High Rental Yields",
-      stat3_desc: "Emaar properties consistently outperform globally in rental occupancy and yields.",
-      stat4_name: "Stable Currency",
-      stat4_desc: "The UAE Dirham is pegged to the US Dollar, ensuring stable, low-risk capital preservation.",
-      collection_title: "THE OASIS PRIVATE SELECTION",
-      collection_subtitle: "Exquisite design details curated for the most discerning clients.",
-      card1_tag: "SHORELINE",
-      card1_title: "Lagoon Mansions",
-      card1_desc: "Stately 6 & 7 bedroom residences offering direct shoreline paths, floor-to-ceiling glass paneling, and private infinity swimming pools.",
-      card2_tag: "WATERFRONT",
-      card2_title: "Shoreline Villas",
-      card2_desc: "Premium 4 & 5 bedroom layouts surrounded by crystal clear swimmable waterways, curated garden lounges, and bespoke terrace decks.",
-      card3_tag: "WELLNESS",
-      card3_title: "Elite Residents Club",
-      card3_desc: "Private concierge, state-of-the-art diagnostic wellness clinic, private sand beach access, and boutique dining options reserved for residents.",
-      footer_disclaimer: "Disclaimer: This landing page is operated by an Authorized Broker Partner of Emaar Properties. Inventory availability, payment plans, and promotional allocations are subject to change.",
-      footer_copyright: "&copy; 2026 Red Door Real Estate in Partnership with Emaar Properties. All rights reserved."
+      highlights_title: "OFFER HIGHLIGHTS",
+      highlights_subtitle: "Flexible and accessible options tailored to help you secure prime Dubai real estate.",
+      stat1_name: "Zero Initial Down Payment",
+      stat1_desc: "Available on selected projects and subject to eligibility.",
+      stat2_name: "Monthly Plans from 0.5%",
+      stat2_desc: "Flexible monthly instalment options on selected Dubai properties.",
+      stat3_name: "Post-Handover Options",
+      stat3_desc: "Selected developments allow buyers to continue payments after receiving the property.",
+      stat4_name: "Multiple Property Types",
+      stat4_desc: "Choose from studios, 1-bedroom, 2-bedroom and 3-bedroom properties.",
+      compliance_note: "* Note: Available on selected projects, subject to availability, terms and buyer eligibility.",
+      collection_title: "SELECTED OPPORTUNITIES",
+      collection_subtitle: "Discover curated apartment profiles located in Dubai's premier residential communities.",
+      card1_tag: "STUDIO",
+      card1_title: "Studio Apartment",
+      card1_desc: "Optimized open-plan layout featuring premium finishes, floor-to-ceiling windows, and access to world-class wellness amenities.",
+      card2_tag: "1 BEDROOM",
+      card2_title: "1-Bedroom Apartment",
+      card2_desc: "Spacious master bedroom layout, modern open kitchen, private terrace, and stunning views of the Dubai skyline.",
+      card3_tag: "2 BEDROOMS",
+      card3_title: "2-Bedroom Apartment",
+      card3_desc: "Generous living room space, en-suite bedrooms, walk-in closets, and expansive outdoor terrace deck overlooking waterways.",
+      card4_tag: "3 BEDROOMS",
+      card4_title: "3-Bedroom Apartment",
+      card4_desc: "Luxury panoramic penthouse layout, premium kitchen appliances, helper quarters, and private plunge pool options.",
+      card_btn: "Check Availability",
+      how_it_works_title: "HOW IT WORKS",
+      how_it_works_subtitle: "Our simplified process to guide you from initial inquiry to property selection.",
+      step1_title: "Select Your Property Type",
+      step1_desc: "Choose between a studio, 1-bedroom, 2-bedroom or 3-bedroom property.",
+      step2_title: "Receive Matching Opportunities",
+      step2_desc: "Our advisors identify available properties matching your budget and preferred payment structure.",
+      step3_title: "Review and Reserve",
+      step3_desc: "Review the project, unit, payment schedule and full terms before making a reservation.",
+      footer_disclaimer: "This website is operated by Red Door Properties. Property availability, prices, payment plans, zero initial down payment promotions and post-handover options are subject to change, applicable terms, developer approval and buyer eligibility. Images may be used for illustrative purposes. This website does not constitute financial, legal or investment advice.",
+      footer_copyright: "&copy; 2026 Red Door Real Estate. All rights reserved."
     },
     fr: {
-      page_title: "The Oasis par Emaar - Portail d'Investissement Immobilier à Dubaï",
-      banner: "ALLOCATION DE PORTEFEUILLE PRIVÉE &bull; VÉRIFICATION REQUISE POUR L'INVENTAIRE INTAKE",
-      marketed_by: "COMMERCIALISÉ EN EXCLUSIVITÉ PAR",
+      page_title: "Propriétés à Dubaï avec plans de paiement flexibles | Red Door Properties",
+      banner: "OPPORTUNITÉS EXCLUSIVES POUR LES CLIENTS RED DOOR &bull; PORTAIL D'ALLOCATION VIP",
       enquire_now: "S'INFORMER",
-      vip_badge: "SUR INVITATION VIP UNIQUEMENT",
-      hero_title: 'THE OASIS <br><span class="gold-text">PAR EMAAR</span>',
-      hero_subtitle: "MANOIRS ET VILLAS EN BORD DE L'EAU",
-      hero_intro: "Présentation de la plus récente et prestigieuse communauté d'Emaar à Dubaï. Conçu pour un cercle restreint, The Oasis propose des demeures somptueuses bordées de lagunes sereines, de plages de sable blanc et d'équipements de bien-être haut de gamme.",
-      alert_title: "Limites Strictes de la Phase I",
-      alert_desc: "Avec un nombre très limité de terrains pour manoirs en bord de lagune disponibles pour le lancement initial, la priorité est accordée aux clients enregistrés. Remplissez le formulaire de vérification pour postuler.",
-      form_title: "Demande d'Allocation",
-      form_desc: "Saisissez vos coordonnées pour vérifier votre profil et accéder aux grilles de prix privées.",
+      vip_badge: "ACCÈS VIP UNIQUEMENT",
+      hero_title: "Devenez propriétaire à Dubaï avec des plans de paiement flexibles",
+      hero_subtitle_1: "Zéro acompte initial sur les projets sélectionnés",
+      hero_subtitle_2: "Plans de paiement mensuels à partir de 0.5%",
+      hero_intro: "Découvrez des opportunités immobilières exclusives à Dubaï sélectionnées pour les clients Red Door, comprenant des studios, appartements 1, 2 et 3 chambres avec des plans de paiement flexibles et des options après remise des clés sur une sélection de projets.",
+      hero_cta_primary: "Voir les propriétés",
+      hero_cta_secondary: "Contacter un conseiller",
+      urgency_text: "Opportunités limitées dans le temps &bull; Nombre d'unités limité",
+      form_title: "Obtenez vos options exclusives",
+      form_desc: "Remplissez le formulaire et un conseiller Red Door vous enverra les opportunités disponibles correspondant à vos préférences.",
       label_firstname: "Prénom",
       placeholder_firstname: "Prénom",
       error_firstname: "Veuillez saisir votre prénom.",
@@ -97,42 +118,60 @@ document.addEventListener('DOMContentLoaded', () => {
       label_phone: "Téléphone / WhatsApp",
       error_phone: "Veuillez saisir un numéro de téléphone valide.",
       label_unit: "Type de Propriété Souhaité",
-      unit_option_1: "Villa Bord de Lagune 4 Chambres",
-      unit_option_2: "Manoir Bord de Lagune 5 Chambres",
-      unit_option_3: "Domaine de Prestige en Bord de l'Eau",
-      unit_option_4: "Indécis / Tout Afficher",
-      btn_submit: "ENREGISTRER MON INTÉRÊT",
+      unit_option_1: "Studio",
+      unit_option_2: "Appartement 1 Chambre",
+      unit_option_3: "Appartement 2 Chambres",
+      unit_option_4: "Appartement 3 Chambres",
+      unit_option_5: "Indécis / Voir tout",
+      consent_text: "Je consens à être contacté par téléphone, e-mail et WhatsApp concernant les opportunités immobilières correspondantes.",
+      error_consent: "Veuillez accepter pour continuer.",
+      btn_submit: "Afficher les offres disponibles",
+      form_disclosure: "Sans engagement. La disponibilité et les plans de paiement dépendent du projet sélectionné, des conditions applicables et de l'éligibilité de l'acheteur.",
       success_title: "Merci de votre intérêt",
       success_desc: "Votre demande d'allocation privée a été enregistrée avec succès. Notre service clientèle VIP prendra contact avec vous dans les plus brefs délais afin de vous accompagner de manière personnalisée.",
       seal_text: "RED DOOR PRIVATE CLIENT CARE",
+      success_whatsapp_btn: "Discuter sur WhatsApp",
       btn_reset: "Soumettre une autre demande",
-      highlights_title: "POURQUOI INVESTIR DANS L'IMMOBILIER À DUBAÏ ?",
-      highlights_subtitle: "Profitez du marché immobilier de luxe le plus dynamique au monde.",
-      stat1_name: "Impôt sur le Revenu de 0%",
-      stat1_desc: "Conservez 100% de vos revenus, rendements locatifs et plus-values.",
-      stat2_name: "Éligibilité au Golden Visa",
-      stat2_desc: "Obtenez une résidence de longue durée pour vous et votre famille lors de l'achat.",
-      stat3_name: "Rendements Locatifs Élevés",
-      stat3_desc: "Les propriétés Emaar surpassent constamment les moyennes mondiales.",
-      stat4_name: "Devise Stable",
-      stat4_desc: "Le Dirham des EAU est indexé sur le dollar américain, assurant une préservation stable du capital.",
-      collection_title: "LA SÉLECTION PRIVÉE THE OASIS",
-      collection_subtitle: "Des détails de conception raffinés pour les clients les plus exigeants.",
-      card1_tag: "RIVAGE",
-      card1_title: "Manoirs Lagunaires",
-      card1_desc: "Demeures majestueuses de 6 et 7 chambres avec accès direct au rivage, baies vitrées et piscines à débordement privées.",
-      card2_tag: "BORD DE L'EAU",
-      card2_title: "Villas de Rivage",
-      card2_desc: "Propriétés haut de gamme de 4 et 5 chambres entourées de voies navigables cristallines, salons de jardin et terrasses sur mesure.",
-      card3_tag: "BIEN-ÊTRE",
-      card3_title: "Club des Résidents d'Élite",
-      card3_desc: "Concierge privé, clinique de bien-être de pointe, accès à la plage de sable privée et restauration réservée aux résidents.",
-      footer_disclaimer: "Avertissement: Cette page est gérée par un courtier agréé partenaire d'Emaar Properties. La disponibilité des stocks, les plans de paiement et les allocations promotionnelles sont sujets à modification.",
-      footer_copyright: "&copy; 2026 Red Door Real Estate en partenariat avec Emaar Properties. Tous droits réservés."
+      highlights_title: "POINTS FORTS DE L'OFFRE",
+      highlights_subtitle: "Des options flexibles et accessibles conçues pour vous aider à acquérir de l'immobilier d'exception à Dubaï.",
+      stat1_name: "Zéro Acompte Initial",
+      stat1_desc: "Disponible sur les projets sélectionnés et sous réserve d'éligibilité.",
+      stat2_name: "Mensualités dès 0.5%",
+      stat2_desc: "Options d'échelonnement mensuel flexibles sur une sélection de propriétés à Dubaï.",
+      stat3_name: "Options Après Remise",
+      stat3_desc: "Certains projets permettent aux acheteurs de poursuivre les paiements après la remise des clés.",
+      stat4_name: "Plusieurs Types de Biens",
+      stat4_desc: "Faites votre choix parmi des studios et appartements de 1, 2 ou 3 chambres.",
+      compliance_note: "* Note : Disponible sur une sélection de projets, sous réserve de disponibilité, des conditions et de l'éligibilité de l'acheteur.",
+      collection_title: "OPPORTUNITÉS SÉLECTIONNÉES",
+      collection_subtitle: "Découvrez des profils d'appartements sélectionnés dans les meilleurs quartiers résidentiels de Dubaï.",
+      card1_tag: "STUDIO",
+      card1_title: "Studio Moderne",
+      card1_desc: "Aménagement optimisé avec des finitions haut de gamme, de grandes baies vitrées et l'accès à des installations de bien-être.",
+      card2_tag: "1 CHAMBRE",
+      card2_title: "Appartement 1 Chambre",
+      card2_desc: "Chambre principale spacieuse, cuisine ouverte moderne, terrasse privée et vue imprenable sur la skyline de Dubaï.",
+      card3_tag: "2 CHAMBRES",
+      card3_title: "Appartement 2 Chambres",
+      card3_desc: "Grand salon, chambres avec salles de bains attenantes, dressing et grande terrasse donnant sur les canaux.",
+      card4_tag: "3 CHAMBRES",
+      card4_title: "Appartement 3 Chambres",
+      card4_desc: "Appartement d'angle panoramique, cuisine équipée haut de gamme, chambre de service et option de piscine privée sur terrasse.",
+      card_btn: "Vérifier la disponibilité",
+      how_it_works_title: "COMMENT ÇA MARCHE",
+      how_it_works_subtitle: "Notre processus simplifié pour vous accompagner de la première demande à la sélection de votre propriété.",
+      step1_title: "Sélectionnez le type",
+      step1_desc: "Choisissez entre un studio ou un appartement de 1, 2 ou 3 chambres.",
+      step2_title: "Recevez les opportunités",
+      step2_desc: "Nos conseillers identifient les propriétés disponibles correspondant à votre budget et profil de paiement.",
+      step3_title: "Examinez et réservez",
+      step3_desc: "Validez le projet, le plan de paiement et l'ensemble des conditions avant d'effectuer votre réservation.",
+      footer_disclaimer: "Ce site web est géré par Red Door Properties. La disponibilité des biens, les prix, les plans de paiement, les promotions sans acompte initial et les options après remise des clés sont sujets à modification, aux conditions applicables, à l'approbation du promoteur et à l'éligibilité de l'acheteur. Les images peuvent être utilisées à des fins illustratives. Ce site ne constitue pas un conseil financier, juridique ou d'investissement.",
+      footer_copyright: "&copy; 2026 Red Door Real Estate. Tous droits réservés."
     }
   };
 
-  // Language Switch Logic
+  // Language Switch Logic (with Arabic RTL structure support prepared)
   function setLanguage(lang) {
     // 1. Update buttons styling
     langButtons.forEach(btn => {
@@ -143,12 +182,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 2. Update page title
+    // 2. Handle Arabic direction (RTL) support when added
+    if (lang === 'ar') {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ar';
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.documentElement.lang = lang;
+    }
+
+    // 3. Update page title
     if (translations[lang] && translations[lang].page_title) {
       document.title = translations[lang].page_title;
     }
 
-    // 3. Update all elements with data-i18n
+    // 4. Update all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.getAttribute('data-i18n');
       if (translations[lang] && translations[lang][key] !== undefined) {
@@ -156,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 4. Update inputs placeholder with data-i18n-placeholder
+    // 5. Update inputs placeholder with data-i18n-placeholder
     document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
       const key = element.getAttribute('data-i18n-placeholder');
       if (translations[lang] && translations[lang][key] !== undefined) {
@@ -164,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 5. Store language preference in localStorage
+    // 6. Store language preference in localStorage
     localStorage.setItem('preferredLanguage', lang);
   }
 
@@ -173,46 +221,64 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
       const lang = button.getAttribute('data-lang');
       setLanguage(lang);
+      
+      // Track language switch event
+      trackEvent('LanguageChange', { selected_language: lang });
     });
   });
 
-  // Initialize page language from localStorage or browser default (fallback to French)
+  // Initialize page language from localStorage or default (French)
   const savedLang = localStorage.getItem('preferredLanguage') || 'fr';
   setLanguage(savedLang);
-
 
   // Input Event Listeners to remove errors on typing
   firstNameInput.addEventListener('input', () => clearError(firstNameInput));
   lastNameInput.addEventListener('input', () => clearError(lastNameInput));
   emailInput.addEventListener('input', () => clearError(emailInput));
   phoneInput.addEventListener('input', () => clearError(phoneInput));
+  consentInput.addEventListener('change', () => clearError(consentInput));
 
   // Active Formspree Endpoint
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdlwwwo';
 
+  // State to prevent duplicate rapid submissions
+  let isSubmitting = false;
+
   // Handle Form Submission
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
     
     const isFirstNameValid = validateFirstName();
     const isLastNameValid = validateLastName();
     const isEmailValid = validateEmail();
     const isPhoneValid = validatePhone();
+    const isConsentValid = validateConsent();
     
-    if (!isFirstNameValid || !isLastNameValid || !isEmailValid || !isPhoneValid) {
+    if (!isFirstNameValid || !isLastNameValid || !isEmailValid || !isPhoneValid || !isConsentValid) {
       return;
     }
     
-    // Show loading state
+    // Set submitting state
+    isSubmitting = true;
     submitBtn.classList.add('loading');
     submitBtn.disabled = true;
+
+    // Get UTM parameters
+    const utmParams = getUtmParams();
     
     const formData = {
       first_name: firstNameInput.value.trim(),
       last_name: lastNameInput.value.trim(),
       email: emailInput.value.trim(),
       phone: countryCodeSelect.value + ' ' + phoneInput.value.trim(),
-      unit: unitSelect.value
+      unit_type: unitSelect.value,
+      consent_provided: consentInput.checked,
+      language: localStorage.getItem('preferredLanguage') || 'fr',
+      page_source: window.location.href,
+      referrer: document.referrer,
+      ...utmParams
     };
 
     try {
@@ -226,6 +292,25 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       if (response.ok) {
+        // Track Form Submission Event (GA4 and Meta Pixel)
+        trackEvent('LeadFormSubmitted', {
+          property_type: formData.unit_type,
+          language: formData.language,
+          utm_source: formData.utm_source || 'direct',
+          utm_medium: formData.utm_medium || 'none',
+          utm_campaign: formData.utm_campaign || 'none'
+        });
+
+        // Trigger standard Lead event for Meta Pixel
+        if (window.fbq) {
+          fbq('track', 'Lead', {
+            content_name: 'Dubai Property Lead Capture',
+            content_category: 'Real Estate Leads',
+            value: 0.00,
+            currency: 'AED'
+          });
+        }
+
         // Transition cards
         formCard.classList.add('hidden');
         successCard.classList.remove('hidden');
@@ -247,7 +332,8 @@ document.addEventListener('DOMContentLoaded', () => {
         : "Connection error. Please check your network and try again.";
       alert(errorAlert);
     } finally {
-      // Revert button state
+      // Revert states
+      isSubmitting = false;
       submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
     }
@@ -259,6 +345,49 @@ document.addEventListener('DOMContentLoaded', () => {
     formCard.classList.remove('hidden');
     firstNameInput.focus();
   });
+
+  // Property Card Action Clicks (Micro-Interactions)
+  const propertyActionBtns = document.querySelectorAll('.card-action-btn');
+  propertyActionBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const selectedProperty = btn.getAttribute('data-property');
+      if (selectedProperty) {
+        unitSelect.value = selectedProperty;
+        
+        // Track property card click event
+        trackEvent('PropertyCardClicked', { property_type: selectedProperty });
+      }
+    });
+  });
+
+  // Track CTA and Anchor Clicks
+  const heroWhatsappBtn = document.getElementById('hero-whatsapp-btn');
+  if (heroWhatsappBtn) {
+    heroWhatsappBtn.addEventListener('click', () => {
+      trackEvent('WhatsAppContactClicked', { placement: 'Hero' });
+    });
+  }
+
+  const successWhatsappBtn = document.getElementById('success-whatsapp-btn');
+  if (successWhatsappBtn) {
+    successWhatsappBtn.addEventListener('click', () => {
+      trackEvent('WhatsAppContactClicked', { placement: 'SuccessCard' });
+    });
+  }
+
+  const stickyWhatsappBtn = document.getElementById('sticky-whatsapp-btn');
+  if (stickyWhatsappBtn) {
+    stickyWhatsappBtn.addEventListener('click', () => {
+      trackEvent('WhatsAppContactClicked', { placement: 'StickyFloating' });
+    });
+  }
+
+  const enquireCta = document.querySelector('.header-cta');
+  if (enquireCta) {
+    enquireCta.addEventListener('click', () => {
+      trackEvent('EnquireNowClicked', { placement: 'Navbar' });
+    });
+  }
 
   // Helper validation functions
   function validateFirstName() {
@@ -294,7 +423,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function validatePhone() {
     const value = phoneInput.value.trim();
-    // basic test: should be at least 6 digits without the country code
     if (value.length < 6) {
       showError(phoneInput);
       return false;
@@ -303,13 +431,51 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
+  function validateConsent() {
+    if (!consentInput.checked) {
+      showError(consentInput);
+      return false;
+    }
+    clearError(consentInput);
+    return true;
+  }
+
   function showError(inputElement) {
     const formGroup = inputElement.closest('.form-group');
-    formGroup.classList.add('has-error');
+    if (formGroup) {
+      formGroup.classList.add('has-error');
+    }
   }
 
   function clearError(inputElement) {
     const formGroup = inputElement.closest('.form-group');
-    formGroup.classList.remove('has-error');
+    if (formGroup) {
+      formGroup.classList.remove('has-error');
+    }
+  }
+
+  // Extract UTM parameters from URL helper
+  function getUtmParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+      utm_source: urlParams.get('utm_source') || '',
+      utm_medium: urlParams.get('utm_medium') || '',
+      utm_campaign: urlParams.get('utm_campaign') || '',
+      utm_term: urlParams.get('utm_term') || '',
+      utm_content: urlParams.get('utm_content') || ''
+    };
+  }
+
+  // Analytics Unified Tracking Handler
+  function trackEvent(eventName, eventParams) {
+    // 1. Google Analytics (gtag)
+    if (window.gtag) {
+      gtag('event', eventName, eventParams);
+    }
+    // 2. Meta Pixel custom event (fbq)
+    if (window.fbq) {
+      fbq('trackCustom', eventName, eventParams);
+    }
+    console.log(`[Tracking Event] ${eventName}:`, eventParams);
   }
 });
