@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize page language from URL parameter (?lang=en or ?lang=fr), localStorage, or default (French)
   const urlParams = new URLSearchParams(window.location.search);
-  const urlLang = urlParams.get('lang');
+  const urlLang = urlParams.get('lang') ? urlParams.get('lang').toLowerCase() : null;
   let savedLang = 'fr';
   if (urlLang === 'en' || urlLang === 'fr') {
     savedLang = urlLang;
